@@ -13,17 +13,19 @@ namespace CRUDPeopleMotion.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public partial class PRODUCTO
+    public partial class CATEGORIA
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CATEGORIA()
+        {
+            this.PRODUCTO = new HashSet<PRODUCTO>();
+        }
+    
         public int Id { get; set; }
-        [Required(ErrorMessage = "El Nombre es obligatorio.")]
+        [Display(Name = "Categoría")]
         public string Nombre { get; set; }
-        [Required(ErrorMessage = "La Descripcion es obligatoria.")]
-        public string Descripcion { get; set; }
-        [Required(ErrorMessage = "El Precio es obligatorio.")]
-        public Nullable<double> Precio { get; set; }
-        [Required(ErrorMessage = "La categoria es obligatoria.")]
-        public int CategoriaId { get; set; }
-        public virtual CATEGORIA CATEGORIA { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PRODUCTO> PRODUCTO { get; set; }
     }
 }

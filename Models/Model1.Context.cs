@@ -13,10 +13,10 @@ namespace CRUDPeopleMotion.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BDPEOPLEMOTIONEntities1 : DbContext
+    public partial class BDPEOPLEMOTIONEntities : DbContext
     {
-        public BDPEOPLEMOTIONEntities1()
-            : base("name=BDPEOPLEMOTIONEntities1")
+        public BDPEOPLEMOTIONEntities()
+            : base("name=BDPEOPLEMOTIONEntities")
         {
         }
     
@@ -25,6 +25,7 @@ namespace CRUDPeopleMotion.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<CATEGORIA> CATEGORIA { get; set; }
         public virtual DbSet<PRODUCTO> PRODUCTO { get; set; }
     }
 }
