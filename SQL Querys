@@ -1,0 +1,89 @@
+USE [BDPEOPLEMOTION]
+GO
+
+CREATE DATABASE BDPEOPLEMOTION;
+
+USE BDPEOPLEMOTION;
+
+CREATE TABLE PRODUCTO(
+Id int identity(1,1) primary key,
+Nombre varchar(255),
+Descripcion varchar(255),
+Precio float
+);
+
+CREATE TABLE CATEGORIA(
+Id int identity(1,1) primary key,
+Nombre varchar(50)
+);
+
+ALTER TABLE PRODUCTO
+ADD CategoriaId int NOT NULL;
+
+ALTER TABLE PRODUCTO
+ADD CONSTRAINT fk_categoria_id FOREIGN KEY(CategoriaId) 
+REFERENCES CATEGORIA(Id);
+
+SELECT * FROM PRODUCTO
+SELECT * FROM CATEGORIA
+
+INSERT INTO CATEGORIA(Nombre)
+VALUES ('Electrónica de Consumo');
+
+INSERT INTO CATEGORIA(Nombre)
+VALUES ('Hogar Inteligente');
+
+INSERT INTO CATEGORIA(Nombre)
+VALUES ('Salud y Bienestar');
+
+SELECT*FROM CATEGORIA
+
+-- Categoría: Electrónica de Consumo
+INSERT INTO PRODUCTO (Nombre, Descripcion, Precio, CategoriaId)
+VALUES ('HelioPod VR', 'Un casco de realidad virtual de alta gama con tecnología de seguimiento ocular y respuesta háptica avanzada.', 499.99, 1);
+
+INSERT INTO PRODUCTO (Nombre, Descripcion, Precio, CategoriaId)
+VALUES ('SmartFridge Pro', 'Un refrigerador inteligente que se conecta a Internet y permite hacer compras en línea directamente desde la puerta del refrigerador.', 1499.99, 1);
+
+INSERT INTO PRODUCTO (Nombre, Descripcion, Precio, CategoriaId)
+VALUES ('NanoDrone X1', 'Un minidron ultracompacto equipado con una cámara HD y modos de vuelo autónomos.', 129.99, 1);
+
+INSERT INTO PRODUCTO (Nombre, Descripcion, Precio, CategoriaId)
+VALUES ('SoundBeams 360', 'Un sistema de altavoces inalámbricos que utiliza tecnología de ultrasonido para dirigir el sonido exactamente hacia donde quieres escucharlo.', 299.99, 1);
+
+INSERT INTO PRODUCTO (Nombre, Descripcion, Precio, CategoriaId)
+VALUES ('SolarCharge Go', 'Una batería portátil con paneles solares incorporados para cargar dispositivos electrónicos mientras estás en movimiento.', 79.99, 1);
+
+-- Categoría: PRODUCTO para el Hogar Inteligente
+INSERT INTO PRODUCTO (Nombre, Descripcion, Precio, CategoriaId)
+VALUES ('RoboChef Master', 'Un robot de cocina avanzado que puede cocinar automáticamente recetas complejas con ingredientes frescos.', 799.99, 2);
+
+INSERT INTO PRODUCTO (Nombre, Descripcion, Precio, CategoriaId)
+VALUES ('CleanBot Max', 'Un robot aspirador y limpiador que utiliza inteligencia artificial para adaptarse a diferentes tipos de suelos y limpiar de manera eficiente.', 499.99, 2);
+
+INSERT INTO PRODUCTO (Nombre, Descripcion, Precio, CategoriaId)
+VALUES ('GardenGuardian', 'Un sistema de riego inteligente que ajusta automáticamente el riego de las plantas según las condiciones climáticas y las necesidades de cada planta.', 199.99, 2);
+
+INSERT INTO PRODUCTO (Nombre, Descripcion, Precio, CategoriaId)
+VALUES ('SleepWell 3000', 'Un colchón inteligente con sensores que monitorizan la calidad del sueño y ajustan la firmeza y temperatura para un descanso óptimo.', 899.99, 2);
+
+INSERT INTO PRODUCTO (Nombre, Descripcion, Precio, CategoriaId)
+VALUES ('EnerSave', 'Un termostato inteligente que aprende tus patrones de uso y optimiza la calefacción y refrigeración para ahorrar energía.', 129.99, 2);
+
+-- Categoría: PRODUCTO para la Salud y Bienestar
+INSERT INTO PRODUCTO (Nombre, Descripcion, Precio, CategoriaId)
+VALUES ('NeuroMind Band', 'Una diadema que utiliza neurotecnología para ayudar a reducir el estrés y mejorar la concentración y la relajación.', 149.99, 3);
+
+INSERT INTO PRODUCTO (Nombre, Descripcion, Precio, CategoriaId)
+VALUES ('VitaFit Pro', 'Un dispositivo portátil que analiza tus necesidades nutricionales y te proporciona recomendaciones personalizadas de dieta y suplementos.', 79.99, 3);
+
+INSERT INTO PRODUCTO (Nombre, Descripcion, Precio, CategoriaId)
+VALUES ('PosturePal', 'Un pequeño dispositivo portátil que se adhiere a tu ropa y te proporciona comentarios en tiempo real para mejorar la postura.', 39.99, 3);
+
+INSERT INTO PRODUCTO (Nombre, Descripcion, Precio, CategoriaId)
+VALUES ('PulseCheck ECG', 'Un dispositivo portátil que realiza electrocardiogramas en segundos para monitorear la salud cardiovascular de manera rápida y fácil.', 199.99, 3);
+
+INSERT INTO PRODUCTO (Nombre, Descripcion, Precio, CategoriaId)
+VALUES ('ZenScent Aroma Diffuser', 'Un difusor de aromaterapia inteligente que se puede controlar a través de una aplicación móvil y ofrece una amplia gama de aromas para mejorar el estado de ánimo y el bienestar.', 59.99, 3);
+
+select*from PRODUCTO
